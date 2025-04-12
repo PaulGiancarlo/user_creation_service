@@ -7,8 +7,9 @@ import com.pdiaz.user_creation_service.model.entity.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class UserMapper {
-    public static User mapToEntity(UserDto userDto, String token){
+        public static User mapToEntity(UserDto userDto){
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setName(userDto.getName());
@@ -25,7 +26,6 @@ public class UserMapper {
             }).collect(Collectors.toList());
 
             user.setPhones(phones);
-            user.setToken(token);
         }
         return user;
     }

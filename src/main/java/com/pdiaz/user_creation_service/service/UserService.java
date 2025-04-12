@@ -8,13 +8,12 @@ import com.pdiaz.user_creation_service.util.JwtUtil;
 import com.pdiaz.user_creation_service.util.UserMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
 import java.util.function.Predicate;
 
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,17 +21,20 @@ public class UserService {
 
     public UserResponseDto createUser(UserDto userDto){
         String email = userDto.getEmail();
-        if(checkUserByEmail.test(email)){
+        boolean validation = userRepository.existsByEmail(email);
+        if(validation){
             throw new RuntimeException("This email was previously registered");
         }
-        String token = JwtUtil.generateToken(email);
-        User user = UserMapper.mapToEntity(userDto, token);
+
+        User user = UserMapper.mapToEntity(userDto);
+
+        String token = JwtUtil.generateToken(user.getId(), email);
         userRepository.save(user);
 
         return  new UserResponseDto(user.getId(), email, token);
     }
 
-    Predicate<String> checkUserByEmail = emailCheck -> userRepository.findByEmail(emailCheck);
+    //Predicate<String> checkUserByEmail = emailCheck -> userRepository.findByEmail(emailCheck);
 
 
 }
