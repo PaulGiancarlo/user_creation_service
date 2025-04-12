@@ -14,4 +14,9 @@ public class PhonesDto {
     @NotBlank(message = "Please add a Country Code")
     private String countryCode;
 
+    public PhonesDto(String number, String cityCode, String countryCode) {
+        this.number = number;
+        this.cityCode = cityCode;
+        this.countryCode= countryCode;
+    }
 }
