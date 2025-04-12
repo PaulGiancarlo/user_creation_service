@@ -24,6 +24,7 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phones> phones;
+    private String token;
     
     @PrePersist
     public void prePersist() {
