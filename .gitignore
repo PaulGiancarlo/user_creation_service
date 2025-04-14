@@ -3,6 +3,13 @@
 
 # Idea files
 .idea
+
+# VsCode files
+.vscode
+
+# Maven files
+.mvn/
+
 # Log file
 *.log
 
