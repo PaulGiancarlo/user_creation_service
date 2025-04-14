@@ -6,6 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +23,14 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime created;
+
+    @UpdateTimestamp
+    private LocalDateTime modified;
+
+    private Boolean active = true;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phones> phones;
     private String token;
@@ -74,5 +86,29 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getCreated() {
+        return created.toString();
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public String getModified() {
+        return modified.toString();
+    }
+
+    public void setModified(LocalDateTime modified) {
+        this.modified = modified;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
