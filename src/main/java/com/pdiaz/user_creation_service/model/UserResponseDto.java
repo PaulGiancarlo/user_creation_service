@@ -14,9 +14,8 @@ public class UserResponseDto {
 
     private Boolean active;
 
-    public UserResponseDto(String id, String token, String created, String modified, Boolean active ) {
+    public UserResponseDto(String id, String created, String modified, Boolean active ) {
         this.id=id;
-        this.token=token;
         this.created=created;
         this.modified=modified;
         this.active=active;
@@ -30,14 +29,6 @@ public class UserResponseDto {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getCreated() {
