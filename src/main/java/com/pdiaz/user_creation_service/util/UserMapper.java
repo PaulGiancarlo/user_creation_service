@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class UserMapper {
+public final class UserMapper {
+    private UserMapper(){}
+
         public static User mapToEntity(UserDto userDto){
         User user = new User();
         user.setEmail(userDto.getEmail());
