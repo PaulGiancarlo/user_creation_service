@@ -1,6 +1,5 @@
 package com.pdiaz.user_creation_service.controller;
 
-import com.pdiaz.user_creation_service.exceptions.UserNotFoundException;
 import com.pdiaz.user_creation_service.model.UserDto;
 import com.pdiaz.user_creation_service.model.UserResponseDto;
 import com.pdiaz.user_creation_service.service.UserService;
@@ -34,19 +33,10 @@ public class UserController {
 
     //Get a User
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getUser(@PathVariable String id){
-        try {
-            UserResponseDto userResponseDto = userService.getUser(id);
-            return ResponseEntity.ok(userResponseDto);
-        }
-        catch (Exception e){
-            throw new UserNotFoundException();
-        }
+    public ResponseEntity<UserResponseDto> getUser(@PathVariable String id) {
+        UserResponseDto userResponseDto = userService.getUser(id);
+        return ResponseEntity.ok(userResponseDto);
+
     }
-    //Patch a User
-    //Put a User
-    //Delete a User
-
-
 
 }
