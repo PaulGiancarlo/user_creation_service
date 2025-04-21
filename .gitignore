@@ -8,7 +8,8 @@
 .vscode
 
 # Maven files
-.mvn/
+.mvn
+
 
 # Log file
 *.log
