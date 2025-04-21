@@ -56,11 +56,11 @@ class UserControllerTest {
                 .content(objectMapper.writeValueAsString(userDto)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").isNotEmpty())
+                .andExpect(jsonPath("$.token").isNotEmpty())
                 .andExpect(jsonPath("$.active").value(Boolean.TRUE.toString()));
 
         assertTrue(userRepository.existsByEmail("juan2@gmail.com"));
 
     }
-
 
 }
