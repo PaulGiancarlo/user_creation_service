@@ -33,7 +33,8 @@ public class User {
     private Boolean active = true;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phones> phones;
-
+    private String token;
+    
     @PrePersist
     public void prePersist() {
         this.id = UUID.randomUUID().toString();
@@ -77,6 +78,14 @@ public class User {
 
     public void setPhones(List<Phones> phones) {
         this.phones = phones;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getCreated() {
