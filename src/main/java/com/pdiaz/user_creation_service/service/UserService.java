@@ -43,7 +43,9 @@ public class UserService {
         //Save the token
         tokenRepository.save(mapToEntity(token, user));
 
-        return  new UserResponseDto(user.getId(), user.getCreated(), user.getModified(), user.getActive());
+
+
+        return  new UserResponseDto(user.getId(), token, user.getCreated(), user.getModified(), user.getActive());
     }
 
     public UserResponseDto getUser(String id) {

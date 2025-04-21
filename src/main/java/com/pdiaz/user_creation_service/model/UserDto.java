@@ -1,5 +1,6 @@
 package com.pdiaz.user_creation_service.model;
 
+import com.pdiaz.user_creation_service.custom.ValidPassword;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -17,6 +18,7 @@ public class UserDto {
     @NotBlank(message = "Please provide a email")
     private String email;
 
+    @ValidPassword()
     @NotBlank(message = "Please provide a password")
     private String password;
 

@@ -44,11 +44,7 @@ class UserControllerTest {
 
     @Test
     void shouldCreateAUser_AndResponseOk() throws Exception{
-        UserDto userDto = new UserDto();
-        userDto.setName("Juan Perez");
-        userDto.setEmail("juan2@gmail.com");
-        userDto.setPassword("password");
-        userDto.setPhones(List.of(new PhonesDto("123123123","1","56")));
+        UserDto userDto = createUserDto();
 
 
         mockMvc.perform(post("/api/users")
@@ -61,6 +57,16 @@ class UserControllerTest {
 
         assertTrue(userRepository.existsByEmail("juan2@gmail.com"));
 
+    }
+
+
+    private UserDto createUserDto() {
+        UserDto userDto = new UserDto();
+        userDto.setName("Juan Perez");
+        userDto.setEmail("juan2@gmail.com");
+        userDto.setPassword("passwoRd13_");
+        userDto.setPhones(List.of(new PhonesDto("123123123","1","56")));
+        return userDto;
     }
 
 }
